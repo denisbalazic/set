@@ -118,11 +118,6 @@ function selectCard(e) {
   let id = parseInt(selectedCard.id);
   let index = table.map(card => card.cardNo).indexOf(id);
   selectedIndexes.push(index);
-  // selectedCardObjs.push(table.splice(index, 1, "placeholder")[0]);
-  // let selectedCardObj = table.filter(card => card.cardNo === id)[0].isSelected = true;
-  // selectedCardObjs.push(selectedCardObj);
-  console.log(table);
-  console.log(selectedIndexes);
   // when set of 3 cards is selected 
   if(numOfSelected === 3) {
     if(checkSet(...selectedIndexes)) {
@@ -167,10 +162,8 @@ function addWinner(e) {
     for(index of selectedIndexes) {
       table[index] = newHand[i];
       i++;
-      // table.splice(index, 1, card);
     }
     hasSet = checkTable(table);
-    // !hasSet && table.splice(-3, 3);
   }
   populateTable(newHand);
   let tableCards = document.querySelectorAll(".card");
@@ -231,9 +224,6 @@ function checkTable(tableCardObjs) {
         setIsFound = checkSet(i, j, k);
         if(setIsFound || (i === 9 && j === 10 && k === 11)) {
           console.log(i, j, k);
-          console.log(tableCardObjs[i].cardNo);
-          console.log(tableCardObjs[j].cardNo);
-          console.log(tableCardObjs[k].cardNo);
           return setIsFound;
         }
       }
